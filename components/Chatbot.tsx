@@ -1,7 +1,7 @@
 'use client';
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Send, HardHat } from 'lucide-react';
+import { X, Send, HardHat, LayoutGrid } from 'lucide-react';
 
 interface Message { role: 'bot' | 'user'; text: string; time: string; }
 
@@ -53,7 +53,6 @@ function getReply(q: string): string {
   return "Thanks for your question! For the most accurate help, please reach out directly:\n\n📞 **0726 859 938** / **0723 271 144**\n✉️ **extreecon@gmail.com**\n\nOr use the contact form on this page — we respond within 24 hours! 🏗️";
 }
 
-// Render markdown-lite (bold + newlines)
 function renderText(text: string) {
   const lines = text.split('\n');
   return lines.map((line, i) => {
@@ -61,7 +60,9 @@ function renderText(text: string) {
     return (
       <span key={i}>
         {parts.map((part, j) =>
-          j % 2 === 1 ? <strong key={j} className="text-white font-semibold">{part}</strong> : part
+          j % 2 === 1
+            ? <strong key={j} className="font-semibold" style={{ color: '#ffffff' }}>{part}</strong>
+            : part
         )}
         {i < lines.length - 1 && <br />}
       </span>
@@ -92,6 +93,14 @@ export default function Chatbot() {
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages, typing]);
+
+  function returnToMenu() {
+    setShowQuick(true);
+    setMessages(prev => [
+      ...prev,
+      { role: 'bot', text: "Back to main menu! 👋 What else can I help you with?", time: getTime() },
+    ]);
+  }
 
   function send(text?: string) {
     const msg = (text ?? input).trim();
@@ -130,11 +139,18 @@ export default function Chatbot() {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.85, y: 20 }}
             transition={{ type: 'spring', stiffness: 300, damping: 28 }}
-            className="fixed bottom-24 right-7 z-50 w-[370px] max-h-[540px] flex flex-col rounded-2xl overflow-hidden shadow-[0_30px_80px_rgba(0,0,0,0.6)]"
-            style={{ background: 'rgba(13,21,38,0.98)', border: '1px solid rgba(255,255,255,0.1)' }}
+            className="fixed bottom-24 right-7 z-50 w-[370px] flex flex-col rounded-2xl overflow-hidden shadow-[0_30px_80px_rgba(0,0,0,0.6)]"
+            style={{
+              background: '#111827',
+              border: '1px solid rgba(255,255,255,0.1)',
+              maxHeight: '540px',
+            }}
           >
             {/* Header */}
-            <div className="flex items-center gap-3 px-5 py-4" style={{ background: 'linear-gradient(135deg,#1A2B5E,#0D1526)', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
+            <div
+              className="flex items-center gap-3 px-5 py-4 shrink-0"
+              style={{ background: 'linear-gradient(135deg,#1A2B5E,#0D1526)', borderBottom: '1px solid rgba(255,255,255,0.08)' }}
+            >
               <div className="w-10 h-10 rounded-full bg-orange flex items-center justify-center text-xl shrink-0">🏗️</div>
               <div>
                 <div className="text-white font-bold text-[15px]">EEC Assistant</div>
@@ -142,34 +158,53 @@ export default function Chatbot() {
                   <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse-dot" /> Online now
                 </div>
               </div>
-              <button onClick={() => setOpen(false)} className="ml-auto text-white/40 hover:text-white transition-colors">
+              {/* Main menu button in header */}
+              <button
+                onClick={returnToMenu}
+                title="Main Menu"
+                className="ml-auto mr-2 flex items-center gap-1.5 text-[11px] text-white/40 hover:text-orange transition-colors border border-white/10 hover:border-orange/40 px-2.5 py-1.5 rounded-lg"
+              >
+                <LayoutGrid size={13} /> Menu
+              </button>
+              <button onClick={() => setOpen(false)} className="text-white/40 hover:text-white transition-colors">
                 <X size={18} />
               </button>
             </div>
 
             {/* Messages */}
-            <div className="flex-1 overflow-y-auto px-4 py-4 space-y-3" style={{ maxHeight: 320 }}>
+            <div
+              className="flex-1 overflow-y-auto px-4 py-4 space-y-3"
+              style={{ maxHeight: '300px', minHeight: '200px' }}
+            >
               {messages.map((m, i) => (
                 <div key={i} className={`flex flex-col ${m.role === 'user' ? 'items-end' : 'items-start'}`}>
-                  <div className={`max-w-[82%] px-4 py-2.5 rounded-2xl text-[13px] leading-relaxed ${
-                    m.role === 'user'
-                      ? 'bg-orange text-white rounded-br-sm'
-                      : 'text-white/80 rounded-bl-sm'
-                  }`}
-                    style={m.role === 'bot' ? { background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.07)' } : {}}
+                  <div
+                    className={`max-w-[82%] px-4 py-2.5 rounded-2xl text-[13px] leading-relaxed ${
+                      m.role === 'user'
+                        ? 'rounded-br-sm'
+                        : 'rounded-bl-sm'
+                    }`}
+                    style={
+                      m.role === 'user'
+                        ? { background: '#F47B20', color: '#ffffff' }
+                        : { background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.08)', color: 'rgba(255,255,255,0.85)' }
+                    }
                   >
                     {renderText(m.text)}
                   </div>
-                  <div className="text-[10px] text-white/25 mt-1 px-1">{m.time}</div>
+                  <div className="text-[10px] mt-1 px-1" style={{ color: 'rgba(255,255,255,0.25)' }}>{m.time}</div>
                 </div>
               ))}
 
               {typing && (
                 <div className="flex items-start">
-                  <div className="px-4 py-3 rounded-2xl rounded-bl-sm flex gap-1" style={{ background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.07)' }}>
-                    <span className="w-2 h-2 rounded-full bg-white/40 animate-typing-1" />
-                    <span className="w-2 h-2 rounded-full bg-white/40 animate-typing-2" />
-                    <span className="w-2 h-2 rounded-full bg-white/40 animate-typing-3" />
+                  <div
+                    className="px-4 py-3 rounded-2xl rounded-bl-sm flex gap-1"
+                    style={{ background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.08)' }}
+                  >
+                    <span className="w-2 h-2 rounded-full bg-white/40 animate-typing-1 inline-block" />
+                    <span className="w-2 h-2 rounded-full bg-white/40 animate-typing-2 inline-block" />
+                    <span className="w-2 h-2 rounded-full bg-white/40 animate-typing-3 inline-block" />
                   </div>
                 </div>
               )}
@@ -177,28 +212,59 @@ export default function Chatbot() {
             </div>
 
             {/* Quick replies */}
-            {showQuick && (
-              <div className="flex flex-wrap gap-2 px-4 pb-2">
-                {quickReplies.map(q => (
-                  <button key={q} onClick={() => send(q)}
-                    className="text-[11px] px-3 py-1.5 rounded-full border transition-all hover:bg-orange hover:border-orange hover:text-white text-orange border-orange/40 bg-orange/06">
-                    {q}
-                  </button>
-                ))}
-              </div>
-            )}
+            <AnimatePresence>
+              {showQuick && (
+                <motion.div
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 8 }}
+                  className="flex flex-wrap gap-2 px-4 pb-3 shrink-0"
+                >
+                  {quickReplies.map(q => (
+                    <button
+                      key={q}
+                      onClick={() => send(q)}
+                      className="text-[11px] px-3 py-1.5 rounded-full border transition-all hover:text-white"
+                      style={{
+                        color: '#F47B20',
+                        borderColor: 'rgba(244,123,32,0.4)',
+                        background: 'rgba(244,123,32,0.08)',
+                      }}
+                      onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.background = '#F47B20'; (e.currentTarget as HTMLButtonElement).style.borderColor = '#F47B20'; }}
+                      onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.background = 'rgba(244,123,32,0.08)'; (e.currentTarget as HTMLButtonElement).style.borderColor = 'rgba(244,123,32,0.4)'; }}
+                    >
+                      {q}
+                    </button>
+                  ))}
+                </motion.div>
+              )}
+            </AnimatePresence>
 
-            {/* Input */}
-            <div className="flex gap-2 px-4 py-3" style={{ borderTop: '1px solid rgba(255,255,255,0.07)' }}>
+            {/* Input area */}
+            <div
+              className="flex gap-2 px-4 py-3 shrink-0"
+              style={{ borderTop: '1px solid rgba(255,255,255,0.07)' }}
+            >
               <input
                 value={input}
                 onChange={e => setInput(e.target.value)}
                 onKeyDown={e => e.key === 'Enter' && send()}
                 placeholder="Ask me anything..."
-                className="flex-1 bg-white/06 border border-white/10 rounded-full px-4 py-2.5 text-[13px] text-white placeholder-white/30 outline-none focus:border-orange transition-colors"
+                className="flex-1 rounded-full px-4 py-2.5 text-[13px] outline-none transition-colors"
+                style={{
+                  background: 'rgba(255,255,255,0.1)',
+                  border: '1px solid rgba(255,255,255,0.15)',
+                  color: '#ffffff',
+                  caretColor: '#F47B20',
+                }}
+                onFocus={e => { e.currentTarget.style.borderColor = '#F47B20'; }}
+                onBlur={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.15)'; }}
               />
-              <button onClick={() => send()}
-                className="w-9 h-9 rounded-full bg-orange flex items-center justify-center text-white hover:bg-orange/80 transition-all shrink-0">
+              <button
+                onClick={() => send()}
+                className="w-9 h-9 rounded-full flex items-center justify-center text-white transition-all shrink-0 hover:opacity-80"
+                style={{ background: '#F47B20' }}
+              >
                 <Send size={14} />
               </button>
             </div>
