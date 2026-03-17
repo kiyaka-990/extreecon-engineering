@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --orange: #F47B20;
+  --navy: #1A2B5E;
+  --dark: #0D1526;
+  --glass: rgba(255,255,255,0.06);
+  --glass-border: rgba(255,255,255,0.12);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--dark);
+  color: #E8EAF6;
+  font-family: var(--font-barlow), sans-serif;
+  overflow-x: hidden;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--dark); }
+::-webkit-scrollbar-thumb { background: var(--orange); border-radius: 4px; }
+
+/* Glass card */
+.glass {
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+/* Ticker animation */
+@keyframes ticker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-ticker { animation: ticker 28s linear infinite; }
+
+/* Pulse dot */
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(1.6); }
+}
+.animate-pulse-dot { animation: pulseDot 2s infinite; }
+
+/* Typing bounce */
+@keyframes typingBounce {
+  0%, 60%, 100% { transform: translateY(0); }
+  30% { transform: translateY(-7px); }
+}
+.animate-typing-1 { animation: typingBounce 1.2s infinite; }
+.animate-typing-2 { animation: typingBounce 1.2s 0.2s infinite; }
+.animate-typing-3 { animation: typingBounce 1.2s 0.4s infinite; }
+
+/* Grid bg */
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(244,123,32,0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(244,123,32,0.07) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
