@@ -5,7 +5,7 @@ import { HardHat, Mail, ChevronDown } from 'lucide-react';
 
 const slides = [
   {
-    img: '/images/hero.JPG',
+    img: '/images/hero.jpg',
     tag: 'Building Engineering',
     headline: ["Building", "Kenya's", "Future"],
     accent: 1,
