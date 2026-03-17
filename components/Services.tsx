@@ -3,25 +3,25 @@ import { motion } from 'framer-motion';
 
 const services = [
   {
-    img: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&q=80',
+    img: '/images/service1.jpg',
     title: 'Building Engineering',
     desc: 'Design and construction of commercial, residential, and industrial structures built to last.',
     items: ['Structural Design & Engineering', 'Commercial Buildings', 'Residential Developments', 'Renovation & Refurbishment'],
   },
   {
-    img: 'https://images.unsplash.com/photo-1548247416-ec66f4900b2e?w=800&q=80',
+    img: '/images/service2.jpg',
     title: 'Water Engineering',
     desc: 'Sustainable water infrastructure solutions for communities, municipalities, and industry.',
     items: ['Water Supply Systems', 'Borehole Drilling & Equipping', 'Sewerage & Drainage', 'Water Treatment Works'],
   },
   {
-    img: 'https://images.unsplash.com/photo-1545558014-8692077e9b5c?w=800&q=80',
+    img: '/images/service3.jpg',
     title: 'Road Engineering',
     desc: 'Professional road and highway construction from rural access roads to major highways.',
     items: ['Highway Design & Construction', 'Road Rehabilitation', 'Bridge Construction', 'Traffic Management'],
   },
   {
-    img: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80',
+    img: '/images/service4.jpg',
     title: 'Real Estate Management',
     desc: 'End-to-end real estate development from land acquisition to property management.',
     items: ['Property Development', 'Estate Management', 'Valuation Services', 'Investment Advisory'],

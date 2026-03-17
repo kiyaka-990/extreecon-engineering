@@ -75,7 +75,7 @@ export default function Footer() {
           <p className="text-white/25 text-[12px]">
             © {new Date().getFullYear()} Extreecon Engineering Company Limited · CPR/2013/122918
           </p>
-          <p className="text-white/15 text-[11px]">Nairobi · Mombasa · Kenya</p>
+          <p className="text-white/15 text-[11px]">Developed by Asterleigh Systems</p>
         </div>
       </div>
     </footer>

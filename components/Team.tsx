@@ -3,25 +3,33 @@ import { motion } from 'framer-motion';
 
 const team = [
   {
-    img: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=500&q=80',
+    initials: 'MS',
+    gradient: 'linear-gradient(135deg, #F47B20 0%, #c45e10 100%)',
+    pattern: '◆',
     name: 'Mohamed Sheikh Mire',
     role: 'Director & Shareholder',
     desc: 'Strategic director overseeing international partnerships and overall company direction.',
   },
   {
-    img: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&q=80',
+    initials: 'EA',
+    gradient: 'linear-gradient(135deg, #1A2B5E 0%, #2d4a9e 100%)',
+    pattern: '▲',
     name: 'Enow Abdullahi Abdi',
     role: 'Director & Shareholder',
     desc: 'Technical director responsible for engineering operations and project delivery excellence.',
   },
   {
-    img: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=500&q=80',
+    initials: 'CM',
+    gradient: 'linear-gradient(135deg, #0f4c3a 0%, #1a7a5e 100%)',
+    pattern: '●',
     name: 'Caroline Mumbanu Mwendwa',
     role: 'Director & Shareholder',
     desc: 'Finance and administration director ensuring compliance and operational excellence.',
   },
   {
-    img: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=500&q=80',
+    initials: 'LO',
+    gradient: 'linear-gradient(135deg, #4a1a6b 0%, #7a2dae 100%)',
+    pattern: '■',
     name: 'Luke Owino Mangongo',
     role: 'Director & Shareholder',
     desc: 'Business development director driving growth and client relationship management.',
@@ -52,17 +60,44 @@ export default function Team() {
               viewport={{ once: true }} transition={{ delay: i * 0.1 }}
               className="glass rounded-2xl overflow-hidden group hover:-translate-y-2 hover:border-orange/30 transition-all duration-400"
             >
-              <div className="relative h-64 overflow-hidden">
-                <img
-                  src={m.img}
-                  alt={m.name}
-                  className="w-full h-full object-cover object-top opacity-85 group-hover:scale-105 transition-all duration-700"
+              {/* Avatar block */}
+              <div
+                className="relative h-56 flex items-center justify-center overflow-hidden"
+                style={{ background: m.gradient }}
+              >
+                {/* Decorative background pattern */}
+                <div className="absolute inset-0 opacity-10"
+                  style={{
+                    backgroundImage: `radial-gradient(circle, rgba(255,255,255,0.4) 1px, transparent 1px)`,
+                    backgroundSize: '24px 24px',
+                  }}
                 />
+                {/* Large faded pattern symbol */}
+                <div className="absolute text-[140px] font-bold opacity-10 text-white select-none leading-none">
+                  {m.pattern}
+                </div>
+                {/* Initials circle */}
+                <div className="relative z-10 flex flex-col items-center gap-3">
+                  <div
+                    className="w-24 h-24 rounded-full flex items-center justify-center text-white font-bebas text-4xl tracking-wider shadow-2xl"
+                    style={{
+                      background: 'rgba(255,255,255,0.15)',
+                      border: '2px solid rgba(255,255,255,0.3)',
+                      backdropFilter: 'blur(10px)',
+                    }}
+                  >
+                    {m.initials}
+                  </div>
+                </div>
+                {/* Bottom fade */}
                 <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, transparent 50%, rgba(10,16,32,0.95))' }} />
+                {/* Role badge */}
                 <div className="absolute bottom-3 left-4 right-4">
                   <div className="text-orange text-[10px] tracking-[2px] uppercase font-semibold">{m.role}</div>
                 </div>
               </div>
+
+              {/* Info */}
               <div className="p-5">
                 <h4 className="text-white font-bold text-[15px] leading-tight mb-2">{m.name}</h4>
                 <p className="text-white/45 text-[12px] leading-relaxed">{m.desc}</p>

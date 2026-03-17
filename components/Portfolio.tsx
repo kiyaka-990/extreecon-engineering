@@ -3,12 +3,12 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const projects = [
-  { id: 1, cat: 'building', img: 'https://images.unsplash.com/photo-1486325212027-8081e485255e?w=900&q=80', title: 'Commercial Complex', loc: 'Westlands, Nairobi', span: 2 },
-  { id: 2, cat: 'road',     img: 'https://images.unsplash.com/photo-1545558014-8692077e9b5c?w=600&q=80',  title: 'Urban Road Network',   loc: 'Nairobi County',    span: 1 },
-  { id: 3, cat: 'water',    img: 'https://images.unsplash.com/photo-1548247416-ec66f4900b2e?w=600&q=80',  title: 'Water Treatment Plant', loc: 'Mombasa',           span: 1 },
-  { id: 4, cat: 'building', img: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600&q=80',  title: 'Residential Estate',    loc: 'Kayole, Nairobi',   span: 1 },
-  { id: 5, cat: 'road',     img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&q=80',  title: 'Bridge Construction',   loc: 'Athi River',        span: 2 },
-  { id: 6, cat: 'water',    img: 'https://images.unsplash.com/photo-1504309092620-4d0ec726efa4?w=600&q=80', title: 'Community Borehole',  loc: 'Kisumu',            span: 1 },
+  { id: 1, cat: 'building', img: '/images/building.jpg', title: 'Commercial Complex', loc: 'Westlands, Nairobi', span: 2 },
+  { id: 2, cat: 'road',     img: '/images/road.jpg',  title: 'Urban Road Network',   loc: 'Nairobi County',    span: 1 },
+  { id: 3, cat: 'water',    img: '/images/water.jpg',  title: 'Water Treatment Plant', loc: 'Mombasa',           span: 1 },
+  { id: 4, cat: 'building', img: '/images/building2.jpg',  title: 'Residential Estate',    loc: 'Kayole, Nairobi',   span: 1 },
+  { id: 5, cat: 'road',     img: '/images/road2.jpg',  title: 'Bridge Construction',   loc: 'Athi River',        span: 2 },
+  { id: 6, cat: 'water',    img: '/images/water2.jpg', title: 'Community Borehole',  loc: 'Kisumu',            span: 1 },
 ];
 
 const catLabels: Record<string, string> = {

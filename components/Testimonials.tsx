@@ -5,25 +5,25 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const testimonials = [
   {
-    img: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&q=80',
+    img: '/images/testimonial1.jpg',
     quote: 'Extreecon delivered our commercial complex on time and within budget. The quality of workmanship exceeded our expectations. We will definitely engage them again.',
     name: 'James Kariuki',
     role: 'Property Developer · Westlands',
   },
   {
-    img: 'https://images.unsplash.com/photo-1494790108755-2616b9e33aa5?w=200&q=80',
+    img: '/images/testimonial2.jpg',
     quote: 'The water engineering team from Extreecon transformed our community\'s access to clean water. Professional, efficient, and truly dedicated to their craft.',
     name: 'Amina Hassan',
     role: 'Community Chairman · Mombasa',
   },
   {
-    img: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=200&q=80',
+    img: '/images/testimonial3.jpg',
     quote: 'We contracted Extreecon for road rehabilitation in our area. Their team was highly skilled and maintained international standards throughout. Outstanding results.',
     name: 'Peter Omondi',
     role: 'County Engineer · Nairobi',
   },
   {
-    img: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&q=80',
+    img: '/images/testimonial4.jpg',
     quote: 'From design to handover, Extreecon\'s team demonstrated technical excellence and clear communication. My residential project was completed flawlessly.',
     name: 'Grace Wanjiku',
     role: 'Homeowner · Kayole',

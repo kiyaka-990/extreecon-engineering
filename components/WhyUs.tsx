@@ -49,7 +49,7 @@ export default function WhyUs() {
             {/* Big image behind */}
             <div className="relative rounded-2xl overflow-hidden h-80 mb-5">
               <img
-                src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=900&q=80"
+                src="/images/whyus.jpg"
                 alt="Construction site"
                 className="w-full h-full object-cover opacity-60"
               />
