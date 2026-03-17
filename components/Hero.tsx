@@ -5,28 +5,44 @@ import { HardHat, Mail, ChevronDown } from 'lucide-react';
 
 const slides = [
   {
+<<<<<<< HEAD
     img: '/images/hero.JPG',
+=======
+    img: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1600&q=80',
+>>>>>>> a6bd16d49d1ee2f69f0f822d5cd08c5c5975511f
     tag: 'Building Engineering',
     headline: ["Building", "Kenya's", "Future"],
     accent: 1,
     sub: 'World-class commercial and residential construction delivered to international standards across Kenya.',
   },
   {
+<<<<<<< HEAD
     img: '/images/hero2.jpg',
+=======
+    img: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=1600&q=80',
+>>>>>>> a6bd16d49d1ee2f69f0f822d5cd08c5c5975511f
     tag: 'Water Engineering',
     headline: ['Delivering', 'Clean Water', 'For All'],
     accent: 1,
     sub: 'Sustainable water infrastructure — boreholes, treatment plants, and supply systems for communities and industry.',
   },
   {
+<<<<<<< HEAD
     img: '/images/hero3.jpg',
+=======
+    img: 'https://images.unsplash.com/photo-1590674899484-d5640e854abe?w=1600&q=80',
+>>>>>>> a6bd16d49d1ee2f69f0f822d5cd08c5c5975511f
     tag: 'Road Engineering',
     headline: ['Roads That', 'Connect', 'Nations'],
     accent: 1,
     sub: 'Professional highway design and construction — from rural access roads to major urban networks.',
   },
   {
+<<<<<<< HEAD
     img: '/images/hero4.jpg',
+=======
+    img: 'https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1600&q=80',
+>>>>>>> a6bd16d49d1ee2f69f0f822d5cd08c5c5975511f
     tag: 'Real Estate',
     headline: ['Spaces Where', 'Life', 'Thrives'],
     accent: 1,
